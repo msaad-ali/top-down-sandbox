@@ -1,9 +1,13 @@
 #include "../include/game-engine.hpp"
 
+Entity* entity;
+
 GameEngine::GameEngine(int screen_width, int screen_height)
 {
     SCREEN_WIDTH = screen_width;
     SCREEN_HEIGHT = screen_height;
+
+	entity = new Entity(10, 10);
 }
 
 GameEngine::~GameEngine()
@@ -70,6 +74,8 @@ bool GameEngine::loadMedia()
 
 void GameEngine::free()
 {
+	delete entity;
+
     //Destroy window and renderer
 	SDL_DestroyRenderer( renderer );
 	SDL_DestroyWindow( window );
@@ -103,10 +109,16 @@ void GameEngine::handleEvents()
 
 void GameEngine::update()
 {
+	entity->update();
 }
 
 void GameEngine::render()
 {
+	// clear screen
+	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
+
+	// render all the entities
+	entity->render(renderer);
 	SDL_RenderPresent(renderer);
 }
