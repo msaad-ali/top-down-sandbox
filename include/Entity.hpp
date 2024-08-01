@@ -1,6 +1,7 @@
 #pragma once
 
-#include "game-engine.hpp"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 class Entity
 {
@@ -14,7 +15,7 @@ class Entity
         Entity(int xpos, int ypos);
         ~Entity();
 
-        void handleEvents();
-        void update();
-        void render(SDL_Renderer* renderer);
+        virtual void handleEvents();
+        virtual void update();
+        virtual void render(SDL_Renderer* renderer);
 };

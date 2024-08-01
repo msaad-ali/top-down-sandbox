@@ -1,13 +1,15 @@
 #include "../include/game-engine.hpp"
 
-Entity* entity;
-
 GameEngine::GameEngine(int screen_width, int screen_height)
 {
     SCREEN_WIDTH = screen_width;
     SCREEN_HEIGHT = screen_height;
 
-	entity = new Entity(10, 10);
+	entityManager = new EntityManager();
+
+	// add entities into the entityManager
+	entityManager->returnVector().push_back(std::make_unique<Entity>(10, 10));
+	entityManager->returnVector().push_back(std::make_unique<Entity>(20, 50));
 }
 
 GameEngine::~GameEngine()
@@ -74,7 +76,8 @@ bool GameEngine::loadMedia()
 
 void GameEngine::free()
 {
-	delete entity;
+	// delete the entityManager pointer
+	delete entityManager;
 
     //Destroy window and renderer
 	SDL_DestroyRenderer( renderer );
@@ -109,7 +112,11 @@ void GameEngine::handleEvents()
 
 void GameEngine::update()
 {
-	entity->update();
+	// update all the entities
+	for ( long unsigned int i = 0; i < entityManager->returnVector().size(); i++ )
+	{
+		entityManager->returnVector()[i]->update();
+	}
 }
 
 void GameEngine::render()
@@ -119,6 +126,10 @@ void GameEngine::render()
 	SDL_RenderClear(renderer);
 
 	// render all the entities
-	entity->render(renderer);
+	for ( long unsigned int i = 0; i < entityManager->returnVector().size(); i++ )
+	{
+		entityManager->returnVector()[i]->render(renderer);
+	}
+
 	SDL_RenderPresent(renderer);
 }

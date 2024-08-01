@@ -17,7 +17,7 @@ void Entity::handleEvents()
 
 void Entity::update()
 {
-    rect.x++;
+    // rect.x++;
 }
 
 void Entity::render(SDL_Renderer* renderer)

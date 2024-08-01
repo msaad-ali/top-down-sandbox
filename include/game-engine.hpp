@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "Entity.hpp"
+#include "EntityManager.hpp"
 
 class GameEngine
 {
@@ -16,6 +16,8 @@ class GameEngine
 
         SDL_Window* window;
         SDL_Renderer* renderer;
+
+        EntityManager* entityManager;
 
     public:
         GameEngine(int screen_width, int screen_height);
