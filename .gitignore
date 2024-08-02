@@ -1,2 +1,5 @@
 # Game's executable file
 top-down-sandbox
+
+# add vscode settings folder
+.vscode/
