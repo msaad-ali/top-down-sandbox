@@ -4,6 +4,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "EntityManager.hpp"
+#include "Player.hpp"
 
 class GameEngine
 {

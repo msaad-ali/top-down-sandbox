@@ -14,7 +14,7 @@ class EntityManager
 
         std::vector<std::unique_ptr<Entity>>& returnVector();
 
-        void handleEvents();
+        void handleEvents(SDL_Event* event);
         void update();
         void render(SDL_Renderer* renderer);
 };

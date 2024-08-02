@@ -8,8 +8,8 @@ GameEngine::GameEngine(int screen_width, int screen_height)
 	entityManager = new EntityManager();
 
 	// add entities into the entityManager
-	entityManager->returnVector().push_back(std::make_unique<Entity>(10, 10));
-	entityManager->returnVector().push_back(std::make_unique<Entity>(20, 50));
+	// entityManager->returnVector().push_back(std::make_unique<Entity>(10, 10));
+	entityManager->returnVector().push_back(std::make_unique<Player>(20, 50));
 }
 
 GameEngine::~GameEngine()
@@ -99,24 +99,21 @@ void GameEngine::handleEvents()
 {
 	SDL_Event event;
 	SDL_PollEvent(&event);
-	switch (event.type)
+
+	// check if quit is selected
+	if (event.type == SDL_QUIT)
 	{
-		case SDL_QUIT:
-			isRunning = false;
-			break;
-		
-		default:
-			break;
+		isRunning = false;
 	}
+
+	// handle events for all the entities
+	entityManager->handleEvents(&event);
 }
 
 void GameEngine::update()
 {
 	// update all the entities
-	for ( long unsigned int i = 0; i < entityManager->returnVector().size(); i++ )
-	{
-		entityManager->returnVector()[i]->update();
-	}
+	entityManager->update();
 }
 
 void GameEngine::render()
@@ -126,10 +123,7 @@ void GameEngine::render()
 	SDL_RenderClear(renderer);
 
 	// render all the entities
-	for ( long unsigned int i = 0; i < entityManager->returnVector().size(); i++ )
-	{
-		entityManager->returnVector()[i]->render(renderer);
-	}
+	entityManager->render(renderer);
 
 	SDL_RenderPresent(renderer);
 }
