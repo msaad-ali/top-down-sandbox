@@ -1,12 +1,5 @@
 #include "../include/Enemy.hpp"
 
-Enemy::Enemy(int xpos, int ypos)
-{
-    rect.x = xpos;
-    rect.y = ypos;
-    rect.w = rect.h = 10;
-}
-
 Enemy::~Enemy()
 {
 }

@@ -6,7 +6,7 @@ class Enemy : public Entity
         int health;
 
     public:
-        Enemy(int xpos, int ypos);
+        Enemy(int xpos, int ypos) : Entity(xpos, ypos) {}
         ~Enemy();
 
         virtual void handleEvents(SDL_Event* event) override;

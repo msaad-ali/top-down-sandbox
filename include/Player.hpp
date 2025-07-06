@@ -6,7 +6,7 @@ class Player : public Entity
         int health;
 
     public:
-        Player(int xpos, int ypos);
+        Player(int xpos, int ypos) : Entity(xpos, ypos) {}
         ~Player();
 
         virtual void handleEvents(SDL_Event* event) override;
