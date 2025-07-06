@@ -5,6 +5,7 @@
 
 #include "EntityManager.hpp"
 #include "Player.hpp"
+#include "Enemy.hpp"
 
 class GameEngine
 {
