@@ -16,12 +16,20 @@ void Player::handleEvents(SDL_Event* event)
     switch (event->key.keysym.sym)
 	{
 		case SDLK_UP:
-			xpos += 10;
+			ypos -= 10;
 			break;
         
         case SDLK_DOWN:
-			xpos -= 10;
+			ypos += 10;
 			break;
+
+        case SDLK_RIGHT:
+            xpos += 10;
+            break;
+
+        case SDLK_LEFT:
+            xpos -= 10;
+            break;
 		
 		default:
 			break;
