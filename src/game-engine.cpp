@@ -9,8 +9,8 @@ GameEngine::GameEngine(int screen_width, int screen_height)
 
 	// add entities into the entityManager
 	// entityManager->returnVector().push_back(std::make_unique<Entity>(10, 10));
-	entityManager->returnVector().push_back(std::make_unique<Player>(20, 50));
-	entityManager->returnVector().push_back(std::make_unique<Enemy>(20, 100));
+	entityManager->returnVector().push_back(std::make_unique<Player>(20, 50, 100, 50));
+	entityManager->returnVector().push_back(std::make_unique<Enemy>(20, 100, 100, 50));
 }
 
 GameEngine::~GameEngine()
